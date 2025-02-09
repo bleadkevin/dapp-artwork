@@ -2,6 +2,16 @@ import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
 import { formatDate } from "../utils/authUtils.js";
 import sign from "jwt-encode";
+/**
+ * All the routes related to Auth are present here.
+ * These are Publicly accessible routes.
+ * */
+
+/**
+ * This handler handles user signup's.
+ * send POST Request at /api/auth/signup
+ * body contains {firstName, lastName, email, password}
+ * */
 
 export const signupHandler = function (schema, request) {
   const { email, password, ...rest } = JSON.parse(request.requestBody);
