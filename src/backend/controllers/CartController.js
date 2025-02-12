@@ -16,7 +16,6 @@ export const updateCartItemHandler = function (schema, request) {
       );
     }
     
-  } 
 };
 
 export const clearCartHandler = function (schema, request) {
