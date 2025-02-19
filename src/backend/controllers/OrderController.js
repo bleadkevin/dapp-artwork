@@ -21,7 +21,27 @@ export const getOrderItemsHandler = function (schema, request) {
 
 export const addItemToOrdersHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
-   catch (error) {
+  try {
+    if (!userId) {
+      new Response(
+        404,
+        {},
+        {
+          errors: ["The email you entered is not Registered. Not Found error"],
+        }
+      );
+    }
+    const userOrders = schema.users.findBy({ _id: userId }).orders;
+    const order = JSON.parse(request.requestBody);
+    userOrders.push({
+      ...order,
+      createdAt: formatDate(),
+      updatedAt: formatDate(),
+      _id: uuid(),
+    });
+    this.db.users.update({ _id: userId }, { orders: userOrders });
+    return new Response(201, {}, { orders: userOrders });
+  } catch (error) {
     return new Response(
       500,
       {},
