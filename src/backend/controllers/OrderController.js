@@ -16,6 +16,7 @@ import { formatDate, requiresAuth } from "../utils/authUtils.js";
 export const getOrderItemsHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
   const userOrders = schema.usersfindBy({ _id: userId }).orders;
+  
   return new Response(200, {}, { orders: userOrders });
 };
 
