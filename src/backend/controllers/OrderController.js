@@ -15,8 +15,14 @@ import { formatDate, requiresAuth } from "../utils/authUtils.js";
 
 export const getOrderItemsHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
+  if (!userId) {
+    new Response(
+      404,
+      {},
+      { errors: ["The mail you entered is not registered"] }
+    );
+  }
   const userOrders = schema.usersfindBy({ _id: userId }).orders;
-  
   return new Response(200, {}, { orders: userOrders });
 };
 
