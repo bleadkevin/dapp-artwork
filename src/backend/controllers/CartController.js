@@ -22,9 +22,6 @@ export const getCartItemsHandler = function (schema, request) {
       }
     );
   }
-  console.log('testing.');
-  console.log(userId);
-
   const userCart = schema.users.findBy({ _id: userId }).cart;
   return new Response(200, {}, { cart: userCart });
 };
