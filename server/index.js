@@ -1,7 +1,7 @@
 const app = require("./app");
 const connectDatabase = require("./config/database");
 const cloudinary = require("cloudinary");
-const logger = require("froglight");
+const logger = require("mongo-errorlog");
 const PORT = process.env.PORT || 4000;
 
 // UncaughtException Error
