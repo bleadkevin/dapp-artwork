@@ -25,6 +25,5 @@ exports.errorHandler = (e) => {
       (s = "No data found");
     for (let r in e.errors) e.errors[r].message && (s = e.errors[r].message);
   }
-  console.log(s)
   return s.includes("Path") && (s = s.slice(6)), s;
 };

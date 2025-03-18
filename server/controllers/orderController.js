@@ -39,10 +39,6 @@ exports.newOrder = asyncErrorHandler(async (req, res, next) => {
     success: true,
     order,
   });
-  res.status(200).json({
-    success: false,
-    order,
-  });
 });
 
 // Get Single Order Details
@@ -51,7 +47,7 @@ exports.getSingleOrderDetails = asyncErrorHandler(async (req, res, next) => {
     "user",
     "name email"
   );
-  console.log(order);
+
   if (!order) {
     return next(new ErrorHandler("Order Not Found", 404));
   }

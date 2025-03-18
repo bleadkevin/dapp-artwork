@@ -46,14 +46,6 @@ class SearchFeatures {
         this.query = this.query.limit(resultPerPage).skip(skipProducts);
         return this;
     }
-
-    pagination(resultPerPage) {
-        const currentPage = Number(this.queryString.page) || 1;
-        console.log(currentPage);
-        const skipProducts = resultPerPage * (currentPage - 1);
-        this.query = this.query.limit(resultPerPage).skip(skipProducts);
-        return this;
-    }
 };
 
 module.exports = SearchFeatures;
